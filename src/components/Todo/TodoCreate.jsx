@@ -51,7 +51,7 @@ CC5 - React State (1 ในฟังก์ชันของกลุ่ม Reac
 */
 
 //#1 : Function Component (Render)
-function TodoCreate() {
+function TodoCreate(props) {
 
   // HOOK FN
   const [isOpenForm, setIsOpenForm] = useState(false);
@@ -70,7 +70,7 @@ function TodoCreate() {
   return (
     <>
       {isOpenForm ? (
-        <TodoForm textSubmit='Add Task'/>
+        <TodoForm textSubmit='Add Task' setIsOpenForm={setIsOpenForm}/>
       ) : (
         <div className={styles.todo__create} onClick={handleClick}>
           <div className={styles.todo__create__button}>

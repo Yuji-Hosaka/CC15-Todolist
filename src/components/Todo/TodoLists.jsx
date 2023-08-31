@@ -14,7 +14,7 @@ function TodoLists() {
   return (
     <ul className={styles.todo__lists}>
       {isOpenForm ? (
-        <TodoForm textSubmit='Edit Task' />
+        <TodoForm textSubmit='Edit Task' setIsOpenForm={setIsOpenForm} />
       ) : (
         <li className={styles.todo}>
           <div className={`${styles.todo__checkbox} ${styles.todo__checkbox__done}`}>
