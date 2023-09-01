@@ -5,25 +5,28 @@ import { HiPlus } from 'react-icons/hi';
 import TodoForm from './TodoForm';
 import styles from './TodoCreate.module.scss';
 
-/* Condition Rendering
-- DEFAULT: Show button & text
-- ACTIVE : Show To-do Form
+/* 
+CC1 - Condition Rendering
+- Default : Show Button & Text
+- Active : Show TodoForm
 
-Concept: true ? <AddTask/> : <TodoForm/>
-
+ Concept : true ? <AddTask/> : <TodoForm/>
 */
 
-/* CC2 - EVENT HANDLING
-- เอาฟังชันไปผูกติดกับ UI เพื่อให้ USER เป็นคนเรียกใช้ฟังชันเอง 
-- onClick : ต้อง Click ก่อนแล้ว FN ถึงจะรัน
-  - User ทำการคลิก
-  - Browser เป็นคนเรียกใช้ฟังชัน โดยส่ง parameter มา 1 ตัว
-    handldClick(eventObject)
+/* 
+CC2 - EVENT HANDLING
+- เอาฟังก์ชันไปผูกติดกับ UI เพื่อให้ USER เป็นคนเรียกใช้ฟังก์ชันเอง
+- onClick : ต้อง Click ก่อน , FN ถึงจะรัน
+    - User ทำการคลิก
+    - Browser จะเป็นคนเรียกใช้ฟังก์ชัน โดยส่ง parameter มา 1 ตัว
+      handleClick(eventObject)
 */
 
-/* CC3 - JS Value ไม่สามารถทำให้ React Rerender ได้... ต้องใช้ State
-
+/* 
+CC3 - JS Value ไม่สามารถทำให้ React Rerender ได้
+ต้องใช้ State
 */
+
 /*
 CC-4 Array Destructuring
 function myUseState() {
@@ -50,27 +53,22 @@ CC5 - React State (1 ในฟังก์ชันของกลุ่ม Reac
   // Rerender 1 ครั้ง == Code ทั้งหมดใน FC จะถูกรันใหม่ 1 ครั้ง
 */
 
-//#1 : Function Component (Render)
 function TodoCreate(props) {
-
-  // HOOK FN
   const [isOpenForm, setIsOpenForm] = useState(false);
-  console.log(isOpenForm);
 
-  // let active = true;
-
-  // #2 : JS Function (Logic)
-  const handleClick = function (event) {
-    console.log('clicked');
+  const handleClick = function () {
     setIsOpenForm(!isOpenForm);
-    // active = !active;
-    // console.log('clicked', active);
   };
 
   return (
     <>
       {isOpenForm ? (
-        <TodoForm textSubmit='Add Task' setIsOpenForm={setIsOpenForm}/>
+        <TodoForm
+          textSubmit='Add Task'
+          setIsOpenForm={setIsOpenForm}
+          data={props.data}
+          setTodo={props.setTodo}
+        />
       ) : (
         <div className={styles.todo__create} onClick={handleClick}>
           <div className={styles.todo__create__button}>
@@ -84,5 +82,3 @@ function TodoCreate(props) {
 }
 
 export default TodoCreate;
-
-

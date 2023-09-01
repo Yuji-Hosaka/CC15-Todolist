@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
+        "nanoid": "^4.0.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-icons": "^4.10.1",
@@ -10,7 +11,7 @@
         "sass": "^1.66.1"
     },
     "scripts": {
-        "start": "react-scripts start",
+        "dev": "react-scripts start",
         "build": "react-scripts build"
     },
     "eslintConfig": {
